@@ -1,0 +1,51 @@
+<style>
+btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+color: #fff;
+background-color: #344B5F;
+border-color: #285e8e;
+}
+</style>
+<div class="form-panel">
+    <h2>Vincular Senior</h2>
+
+    <form novalidate="novalidate" name="vinculo_form" class="form-horizontal style-form"  ng-submit="addSenior()" role="form">
+
+		<div class="panel panel-default" style="width: 80%; margin: auto;" >
+			<div class="panel-body">
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Telefone</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="phone" name="phone" ng-model="phone"  
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  					<label class="col-sm-3 control-label">Chave</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="chave" name="nome" ng-model="chave"  
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+
+			</div>
+			<div class="panel-footer">
+				<div class="form-group" style="margin-bottom: 0px; padding-bottom: 0px">
+					<div class="col-sm-9"></div>
+					<div class="col-sm-3">		
+		            	<button type="submit" ng-disabled="vinculo_form.$invalid" class="btn btn-primary pull-right" style="margin-left: 5px">Enviar</button>
+		            	<button type="button" ng-click="cancel()" class="btn btn-default pull-right">Cancelar</button>
+		            </div>
+	            </div>
+			</div>
+		</div>
+    </form>
+</div>
+<script>
+ function atualizaDias() { 
+  var scope = angular.element($("[name=vinculo_form]")).scope();
+  scope.loadDias();
+  console.log(scope);
+  scope.$apply();
+ }
+ $(function(){
+  setTimeout(atualizaDias, 400); 
+ })
+</script>

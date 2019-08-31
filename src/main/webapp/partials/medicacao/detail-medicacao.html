@@ -1,0 +1,139 @@
+<meta charset="utf-8">
+<style>
+btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+color: #fff;
+background-color: #344B5F;
+border-color: #285e8e;
+}
+</style>
+<div class="form-panel">
+	
+	<form novalidate="novalidate" name="medicacao_form" class="form-horizontal style-form" ng-submit="updateMedicacao()" role="form">
+		<div class="panel panel-default" style="width: 80%; margin: auto;" >
+			<div class="panel-heading panelHeaderColor">
+		    	<h1 class="panel-title" >Medicação</h1>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+  					<label class="col-sm-3 control-label">Nome da Medicação</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="nome" name="nome" ng-model="update_medicacao.nome" 
+							placeholder="Nome da Medicação" 
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+		
+					<!-- Validation DIV -->
+					<div class="alert alert-warning alert-dismissible" role="alert" ng-show="medicacao_form.update_medicacao.$dirty && medicacao_form.update_medicacao.$invalid">
+						<small class="error" ng-show="medicacao_form.update_medicacao.$error.required">
+							O senior &eacute; obrigat&oacute;ria. </small>
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Notas</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="notas" name="notas" ng-model="update_medicacao.obs" 
+							placeholder="Notas (apos refeição , para gastrite )" 
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Tomar</label>
+					<div class="col-sm-3">
+						<pagination  total-items="100" ng-model="update_medicacao.prioridade" items-per-page="1" class="pagination" style="margin: 0;"
+								previous-text="-" next-text="+" max-size="maxSize">
+						</pagination>
+					</div>
+					<label class="col-sm-3 control-label">Tipo de Remédio</label>
+					<div class="col-sm-3">
+						<select id="descTomar" name="descTomar"  required class="form-control" ng-model="update_medicacao.tipo">
+			           		<option  value="0" selected="selected">Comprimidos</option>
+			           		<option value="1" >Adesivos</option>
+			           		<option value="2">Ampolas</option>
+							<option value="3">Sachês</option>
+							<option value="4">Tabletes</option>
+							<option value="5">Sprays</option>
+							<option value="6">Cápsulas</option>
+							<option value="7">Gotas</option>
+							<option value="8">Peças</option>
+							<option value="9">Injeções</option>
+							<option value="10">Litros</option>
+							<option value="11">Jatos</option>
+							<option value="12">Unidades</option>
+							<option value="13">Copos</option>
+							<option value="14">Colher de chá</option>
+							<option value="15">Colher de sopa</option>
+							<option value="16">Remendo</option>
+							<option value="17">mcg</option>
+							<option value="18">cc</option>
+							<option value="19">ml</option>
+							<option value="20">g</option>
+							<option value="21">mg</option>
+
+			           	</select>
+					</div>
+  				</div>
+  				
+				<div class="form-group">
+  					<label class="col-sm-3 control-label">Frequência</label>
+					<div class="col-sm-3">
+						<select name="selecionar"  required class="form-control" ng-model="update_medicacao.duracao">
+							<option value="0">1 X ao dia</option>
+							<option value="1">2 X ao dia</option>
+							<option value="2">3 X ao dia</option>
+							<option value="3">4 X ao dia</option>
+							<option value="4">1 X por semana</option>
+							<option value="5">1 X ao mês</option>
+							<option value="6">Dia sim Dia não</option>		
+						</select>												
+					</div>
+					<label class="col-sm-3 control-label">Repetir durante</label>
+					<div class="col-sm-3">
+						<select name="selecionar" required class="form-control" ng-model="update_medicacao.dosagem">
+							<option value="0">1 dia</option>
+							<option value="1">2 dias</option>
+							<option value="2">3 dias</option>
+							<option value="3">4 dias</option>
+							<option value="4">5 dias</option>
+							<option value="5">6 dias</option>
+							<option value="6">7 dias</option>
+							<option value="7">8 dias</option>
+							<option value="8">9 dias</option>
+							<option value="9">Pra sempre</option>			
+						</select>
+					</div>
+					
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Data Inicio</label>
+					<div class="col-sm-3">
+						<p class="input-group">
+						<input type="text" class="form-control disabled" ng-disabled="disabled" 
+								datepicker-popup="{{format}}" 
+								ng-model="update_medicacao.dataInicial" 
+								is-open="opened" 
+								min-date="minDate" 
+								show-weeks = "false" 
+								datepicker-options="dateOptions" 
+								date-disabled="disabled(date, mode)" 
+								close-text="Fechar" show-button-bar = "false"  style="width:96%" novalidate/>
+						<span class="input-group-btn">
+						  <button type="button" class="btn btn-default" ng-click="open($event)" style="right:12px"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span>
+			            </p>
+					</div>
+					<div class="col-sm-3"><input type="time" class= "form-control" value="23:30"  ng-model="update_medicacao.hora"></div>
+					
+				</div>
+			</div>
+			
+			<div class="panel-footer">
+				<div class="form-group" style="margin-bottom: 0px; padding-bottom: 0px">
+					<div class="col-sm-6"></div>
+					<div class="col-sm-6">		
+		            	<button type="submit"  class="btn btn-primary pull-right" ng-disabled="medicacao_form.$invalid" style="margin-left: 5px">Salvar</button>
+		            	<button type="button" ng-click="cancel()" class="btn btn-default pull-right">Cancelar</button>
+		            </div>
+	            </div>
+			</div>
+	</form>
+</div>

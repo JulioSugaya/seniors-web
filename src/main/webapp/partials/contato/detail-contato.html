@@ -1,0 +1,56 @@
+<style>
+btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+color: #fff;
+background-color: #344B5F;
+border-color: #285e8e;
+}
+</style>
+<div class="form-panel">
+    <h2>Edi&ccedil;&atilde;o de Contatos de Emergência</h2>
+
+    <form novalidate="novalidate" name="Contato_form" class="form-horizontal style-form"  ng-submit="updateContato()" role="form">
+
+		<div class="panel panel-default" style="width: 80%; margin: auto;" >
+			<div class="panel-body">
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Nome</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="nome" name="nome" ng-model="update_contato.nome" 
+							placeholder="Nome (ex. Policia)" 
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Telefone</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="numero" name="numero" ng-model="update_contato.numero" 
+							placeholder="Telefone (ex. 911)" 
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+
+			</div>
+			<div class="panel-footer">
+				<div class="form-group" style="margin-bottom: 0px; padding-bottom: 0px">
+					<div class="col-sm-9"></div>
+					<div class="col-sm-3">		
+		            	<button type="submit" ng-disabled="contato_form.$invalid" class="btn btn-primary pull-right" style="margin-left: 5px">Salvar</button>
+		            	<button type="button" ng-click="cancel()" class="btn btn-default pull-right">Cancelar</button>
+		            </div>
+	            </div>
+			</div>
+		</div>
+    </form>
+</div>
+<script>
+ function atualizaDias() { 
+  var scope = angular.element($("[name=Contato_form]")).scope();
+  scope.loadDias();
+  console.log(scope);
+  scope.$apply();
+ }
+ $(function(){
+  setTimeout(atualizaDias, 400); 
+ })
+</script>

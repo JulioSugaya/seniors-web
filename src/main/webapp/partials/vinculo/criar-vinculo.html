@@ -1,0 +1,52 @@
+<style>
+btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+color: #fff;
+background-color: #344B5F;
+border-color: #285e8e;
+}
+</style>
+<div class="form-panel">
+    <h2>Criação de Vinculos</h2>
+	<br><br>
+    <form novalidate="novalidate" name="medicacao_form" class="form-horizontal style-form"  role="form">
+
+		<div class="panel panel-default" style="width: 40%; margin: auto;" >
+			<div class="panel-heading" style="background-color: orange">
+		    	<h1 class="panel-title" >Dados do Seniors</h1>
+			</div>
+			<div class="panel-body">
+  				<div class="form-group">
+  					<p class="centered"><a href="profile.html"><img src="assets/img/ui-sherman.jpg" class="img-circle" width="50"></a></p>
+              	  	<h5 class="centered">Pedro da Pedreiras</h5>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-4 control-label">Nome</label>
+					<div class="col-sm-8 control-label">
+						Pedro Antonio das Pedreiras Neves
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-4 control-label">Nascimento</label>
+					<div class="col-sm-8 control-label">
+						14 / 09 / 1915
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-4 control-label">Estado / Cidade</label>
+					<div class="col-sm-8 control-label">
+						Pernambuco / Recife
+					</div>
+  				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="form-group" style="margin-bottom: 0px; padding-bottom: 0px">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-8">		
+		            	<button type="submit" ng-disabled="medicacao_form.$invalid" class="btn btn-primary pull-right" style="margin-left: 5px">Requisitar vinculo</button>
+		            	<button type="button" ng-click="cancel()" class="btn btn-default pull-right">Cancelar</button>
+		            </div>
+	            </div>
+			</div>
+		</div>
+    </form>
+</div>

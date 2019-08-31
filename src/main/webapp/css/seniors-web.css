@@ -1,0 +1,143 @@
+/* -server css stylesheet */
+.menu {
+	list-style: none;
+	border-bottom: 0.1em solid black;
+	margin-bottom: 2em;
+	padding: 0 0 0.5em;
+}
+
+.menu:before {
+	content: "[";
+}
+
+.menu:after {
+	content: "]";
+}
+
+.menu>li {
+	display: inline;
+}
+
+.menu>li:before {
+	content: "|";
+	padding-right: 0.3em;
+}
+
+.menu>li:nth-child(1):before {
+	content: "";
+	padding: 0;
+}
+
+.offer-banners {
+	width: 650px;
+	background-color: #ececec;
+}
+
+.thumbnail-flow {
+	width: 200px;
+	height: 150px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+
+.image-thumbnail {
+	width: 200px;
+	height: 150px;
+}
+
+.thumbnail-content {
+	float:left;
+	width:200px;
+	margin:5px;
+}
+
+body {
+	padding-top: 60px;
+}
+
+ng-hide {
+	display: none;
+}
+
+.loader {
+	font-size: 36px;
+	line-height: 36px;
+	font-weight: bold;
+	width: 200px;
+	height: 36px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+
+.modal { 
+	display: table;
+}
+
+.modal-content {
+	top: 10px;
+}
+.modal-dialog {
+	margin: 50px auto;
+}
+#confirmModal .modal-content {
+	top: 0;
+}
+
+/* Custom dialog/modal headers */
+
+.dialog-header-error { background-color: #d2322d; }
+.dialog-header-wait { background-color: #428bca; }
+.dialog-header-notify { background-color: #eeeeee; }
+.dialog-header-confirm { background-color: #333333; }
+	.dialog-header-error span, .dialog-header-error h4,
+	.dialog-header-wait span, .dialog-header-wait h4,
+	.dialog-header-confirm span, .dialog-header-confirm h4 { color: #ffffff; }
+
+/* Ease Display */
+
+.pad { padding: 25px; }
+
+#map {
+    height:500px;
+    width:740px;
+}
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+h2 {
+    margin-bottom:0;
+    margin-top: 0;
+}
+
+/* da espaco a esquerda a botoes que estavam colado na div */
+.espacoBotao {
+	margin-left: 10px;	
+}
+.black-bg {
+  background-color: rgb(44, 47, 103);
+  border-bottom: 1px solid #131007;
+}
+
+#sidebar {
+  background-color: rgb(44, 47, 103);
+}
+
+.panelHeaderColor {
+	background-color: rgb(44, 47, 103) !important;
+	color: white  !important;
+	
+}
+
+.content-panel {
+	margin-top: 10px;
+}
+}

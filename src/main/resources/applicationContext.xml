@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<context:annotation-config />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="seniors_web" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<!-- Initializing DAO's -->
+	<bean id="seniorsUserDAO"	class="org.seniors.dao.SeniorsUserDAO"></bean>
+	
+	<bean id="dbInitializer" class="org.seniors.dao.DAOInitializer">
+		<constructor-arg ref="passwordEncoder" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!--
+		INIT REST COMPONENTS 
+	 -->
+	
+	<context:component-scan base-package="org.seniors.rest.api" />
+	
+	<!-- 
+		SPRING SECURITY SETUP
+	-->
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder">
+		<constructor-arg value="S3cR3t#15AtH1N6Th4tH45n0S3Cr3t" />
+	</bean>
+	
+	<security:authentication-manager id="authenticationManager">
+		<security:authentication-provider user-service-ref="seniorsUserDAO">
+			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<security:http
+			realm="Protected API"
+			use-expressions="true"
+			auto-config="false"
+			create-session="stateless"
+			entry-point-ref="unauthorizedEntryPoint"
+			authentication-manager-ref="authenticationManager">
+		<security:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER" />
+		<security:intercept-url pattern="/seniors-web/api/user/authenticate" access="permitAll" />
+		<security:intercept-url pattern="/seniors-web/api/mobile/login" access="permitAll" />
+		
+		<security:intercept-url pattern="/seniors-web/api/new_user" access="permitAll" />
+		
+		<!-- Mobile Login Authentication -->
+		<security:intercept-url pattern="/seniors-web/api/mobile/login" access="permitAll" />
+		<security:intercept-url pattern="/seniors-web/api/mobile/senior" access="permitAll" />
+		<security:intercept-url pattern="/seniors-web/api/logout" access="hasAnyRole('user','admin')" />
+		
+		<!-- User CRUD -->
+		<security:intercept-url method="GET" 	pattern="/seniors-web/api/users/**" access="hasAnyRole('user','admin')" />
+		<security:intercept-url method="PUT" 	pattern="/seniors-web/api/users/**" access="hasRole('admin')" />
+		<security:intercept-url method="POST" 	pattern="/seniors-web/api/users/**" access="hasRole('admin')" />
+		<security:intercept-url method="DELETE" pattern="/seniors-web/api/users/**" access="hasRole('admin')" />
+	</security:http>
+
+	<bean id="unauthorizedEntryPoint" class="org.seniors.rest.security.UnauthorizedEntryPoint" />
+
+	<bean class="org.seniors.rest.security.AuthenticationTokenProcessingFilter" id="authenticationTokenProcessingFilter">
+		<constructor-arg ref="seniorsUserDAO" />
+	</bean>
+</beans>

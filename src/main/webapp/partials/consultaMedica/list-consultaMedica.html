@@ -1,0 +1,32 @@
+	<meta charset="utf-8">
+	<div class="col-md-12">
+		<div class="content-panel">
+			<h4><i class="fa fa-angle-right"></i>Consulta Medica</h4>
+	        <hr>
+		    <table id="tbl" class="table table-striped table-advance table-hover">
+		        <thead>
+		        <tr>
+		        	<th><i class=" fa fa-edit"></i> Medico</th>
+		        	<th><i class=" fa fa-edit"></i> Descricao</th>
+		        	<th><i class=" fa fa-edit"></i> Data</th>
+		        	<th><i class=" fa fa-edit"></i> Hora</th>
+		        	<th><i class=" fa fa-edit"></i></th>
+		        </tr>
+		        </thead>
+		        <tbody>
+		        <tr ng-repeat="consulta in consultaMedicas">
+		            <td>{{consulta.nomeMedico}}</td>
+		            <td>{{consulta.descricao}}</td>
+		            <td>{{consulta.data | date:'dd/MM/yyyy'}}</td>
+		            <td>{{consulta.hora}}</td>
+		            <td>
+			            <button class="btn btn-primary btn-xs" ng-click="editConsultaMedica(consulta.id)"><i class="fa fa-pencil"></i></button>
+			            <button class="btn btn-danger btn-xs" ng-click="deleteConsultaMedica(consulta.id)"><i class="fa fa-trash-o "></i></button>
+			        </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		    <a  class="btn btn-default espacoBotao" href="#!/consultaMedica/new">Nova Consulta</a>
+			<button class="btn btn-default espacoBotao" ng-click="generatefromtable()"><i class="fa fa-file-pdf-o"></i> Imprimir</button>
+		</div>	
+	</div>

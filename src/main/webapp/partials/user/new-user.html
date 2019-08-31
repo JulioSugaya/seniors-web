@@ -1,0 +1,103 @@
+<div class="container">
+    <h1>Cadastro de Usu&aacute;rios</h1>
+	<script>console.log("src/main/webapp/partial/new-user");</script>
+    <form novalidate="novalidate" name="user_form" class="form-horizontal" ng-submit="createNewUser()" role="form">
+        <div class="form-group">
+            <label class="control-label" for="name">Nome:</label>
+
+            <div class="controls">
+                <input type="text" class="form-control" id="name" name="name" ng-model="new_user.name" placeholder="Nome" 
+                	ng-minlength="6" ng-maxlength="140" maxlength="140" required/>
+                
+                <!-- Validation DIV -->
+                <div class="alert alert-warning alert-dismissible" role="alert"  ng-show="user_form.name.$dirty && user_form.name.$invalid">
+				    <small class="error" ng-show="user_form.name.$error.required">
+				        Seu nome &eacute; obrigat&oacute;rio.
+    				</small>
+				    <small class="error" ng-show="user_form.name.$error.minlength">
+				        Seu nome precisa ter ao menos 6 caracteres.
+				    </small>
+				    <small class="error" ng-show="user_form.name.$error.maxlength">
+				        Seu nome n&atilde;o pode conter mais de 140 caracteres.
+				    </small>
+	  			</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label" for="email">Email:</label>
+
+            <div class="controls">
+                <input type="email" class="form-control" id="email" name="txemail" ng-model="new_user.email" placeholder="E-mail" required/>
+                
+                 <!-- Validation DIV -->
+                <div class="alert alert-warning alert-dismissible" role="alert" ng-show="user_form.txemail.$dirty && user_form.txemail.$invalid">
+				    <small class="error" ng-show="user_form.email.$error.required">
+				        Seu email &eacute; obrigat&oacute;rio.
+    				</small>
+    				<small class="error" ng-show="user_form.txemail.$error.email">
+				        Informe um e-mail v&aacute;lido!
+    				</small>
+	  			</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+           	<label class="control-label" for="role">Perfil do Usu&aacute;rio</label>
+           	
+           	 <div class="controls">
+	           	<select name="role" ng-model="new_user.role" required class="form-control">
+	           		<option value="ADMIN">Administrador</option>
+	           		<option value="USER">Operador</option>
+	           	</select>
+           	 </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label" for="password">Senha:</label>
+
+            <div class="controls">
+                <input type="password" class="form-control" id="txpassword" ng-minlength="6" ng-maxlength="16" maxlength="16"
+                	  name="txpassword" ng-model="new_user.password" placeholder="Senha" ng-pattern="/^[a-zA-Z0-9\-\_]{1,}$/" ng-trim="false" required/>
+            </div>
+            
+            <!-- Validation DIV -->
+           	<div class="alert alert-warning alert-dismissible" role="alert" ng-show="user_form.txpassword.$dirty && user_form.txpassword.$invalid">
+			    <small class="error" ng-show="user_form.txpassword.$error.required">
+			        Sua senha &eacute; obrigat&oacute;ria.
+   				</small>
+   				<small class="error" ng-show="user_form.txpassword.$error.pattern">
+			        Sua senha n&atilde;o pode conter espaços.
+			    </small>
+			    <small class="error" ng-show="user_form.txpassword.$error.minlength">
+			        Sua senha precisa ter ao menos 6 caracteres.
+			    </small>
+  			</div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="password">Repetir Senha:</label>
+
+            <div class="controls">
+                <input type="password" class="form-control" id="repassword" ng-minlength="6" ng-maxlength="16" maxlength="16" 
+                			name="repassword" ng-model="repassword" ng-trim="false" placeholder="Repetir a senha" nx-equal-ex="new_user.password" required />
+            </div>
+            
+            <div class="alert alert-warning alert-dismissible" role="alert" ng-show="user_form.repassword.$error.nxEqualEx">
+			    <small class="error" ng-show="user_form.repassword.$error.nxEqualEx">
+			        As senhas n&atilde;o conferem.
+   				</small>
+  			</div>
+        </div>        
+        
+        <div class="form-group">
+        	<br>
+            <div class="controls">
+            	<button type="submit" ng-disabled="user_form.$invalid" class="btn btn-primary">Novo usu&aacute;rio</button>
+            </div>
+        </div>
+        <input type="text" class="form-control" data-mask="(99) 99999-9999" placeholder="Telefone" name="telefoneUsuario" 
+                                                ng-model="cadUserCt.telefoneUsuario">
+    </form>
+    
+</div>

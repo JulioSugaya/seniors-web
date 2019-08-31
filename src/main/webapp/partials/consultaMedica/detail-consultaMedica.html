@@ -1,0 +1,76 @@
+<meta charset="utf-8">
+<div class="form-panel">
+
+    <form novalidate="novalidate" name="consultamedica_form" class="form-horizontal style-form"  role="form"  ng-submit="updateConsultaMedica()">
+
+		<div class="panel panel-default" style="width: 80%; margin: auto;" >
+			<div class="panel-heading panelHeaderColor">
+		    	<h1 class="panel-title" >Consultas Médicas</h1>
+			</div>
+			<div class="panel-body">
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Nome do Médico</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="nomeMedico" name="nomeMedico" 
+							placeholder="Digite o nome do seu medico"  ng-model="update_consultaMedica.nomeMedico"
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Descrição</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="descricao" name="descricao"
+							placeholder="Descrição da consulta" ng-model="update_consultaMedica.descricao"
+		                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+					</div>
+  				</div>
+  				<div class="form-group">
+  					<label class="col-sm-3 control-label">Data</label>
+					<div class="col-sm-4">
+						<p class="input-group">
+						<input type="text" class="form-control disabled" 
+								ng-disabled="disabled"
+								ng-model="update_consultaMedica.data"
+								datepicker-popup="{{format}}" 
+								is-open="opened" 
+								min-date="minDate" 
+								show-weeks = "false" 
+								datepicker-options="dateOptions" 
+								date-disabled="disabled(date, mode)" 
+								ng-required="true" close-text="Fechar" show-button-bar = "false"  style="width:96%"/>
+						<span class="input-group-btn">
+						  <button type="button" class="btn btn-default" ng-click="open($event)" style="right:12px"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span>
+			            </p>
+					</div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-1">Hora</div>
+					<div class="col-sm-3"><input type="time" class= "form-control" value="23:30" ng-model="update_consultaMedica.hora"></div>
+				</div>  
+				<div class="form-group">
+					<div class="col-sm-3">Lembrar com antecedência</div>
+					<div class="col-sm-3">
+						<select id="lembrar" name=lembrar required class="form-control" ng-model="update_consultaMedica.lembrar">
+			           		<option  value="1h" selected="selected">1 Hora antes</option>
+			           		<option value="2h">2 Horas antes</option>
+			           		<option value="4h">4 Horas antes</option>
+			           		<option value="1d">1 Dia antes</option>
+			           		<option value="2d">2 Dias antes</option>
+			           		<option value="4d">4 Dias antes</option>
+			           		<option value="N">Não Lemnbrar</option>
+			           	</select>
+					</div>
+				</div>				
+			</div>
+			<div class="panel-footer">
+				<div class="form-group" style="margin-bottom: 0px; padding-bottom: 0px">
+					<div class="col-sm-9"></div>
+					<div class="col-sm-3">		
+		            	<button type="submit"  class="btn btn-primary pull-right" style="margin-left: 5px">Salvar</button>
+		            	<button type="button" class="btn btn-default pull-right">Cancelar</button>
+		            </div>
+	            </div>
+			</div>
+		</div>
+    </form>
+</div>

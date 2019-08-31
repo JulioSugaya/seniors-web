@@ -1,0 +1,150 @@
+<meta charset="utf-8">
+<div class="row animated fadeInRight"  >
+     <div class="col-lg-2"><loading></loading></div>
+     <div class="col-lg-6">
+         <div role="alert" class="alert alert-danger" ng-show="myForm.showErro">
+            <span class="error"  ng-show="user_form.showErro">
+              {{user_form.msgErro}}</span>
+         </div>
+     </div>
+     <div class="col-lg-4"></div>
+ </div> 
+<div class="form-panel">
+    <h2>Criação de Novo Usu&aacute;rio</h2>
+    <form novalidate="novalidate" name="user_form" class="form-horizontal style-form" ng-submit="updateUser()" role="form">
+
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">Nome Completo</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" ng-model="update_user.nomeCompleto" placeholder="Nome Completo" 
+                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+			</div>
+			<!-- Validation DIV -->
+			<div class="alert alert-warning alert-dismissible" role="alert"
+				ng-show="user_form.nomeCompleto.$dirty && user_form.nomeCompleto.$invalid">
+				<small class="error" ng-show="user_form.nomeCompleto.$error.required">
+					Seu nome &eacute; obrigat&oacute;rio. </small> <small class="error"
+					ng-show="user_form.nomeCompleto.$error.minlength"> Seu nome precisa
+					ter ao menos 6 caracteres. </small> <small class="error"
+					ng-show="user_form.nomeCompleto.$error.maxlength"> Seu nome
+					n&atilde;o pode conter mais de 140 caracteres. </small>
+			</div>	
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">EndereÃ§o</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="endereco" name="endereco" ng-model="update_user.endereco" placeholder="EndereÃ§o" 
+                	ng-minlength="2" ng-maxlength="200" maxlength="200"/>
+			</div>
+			<!-- Validation DIV -->
+			<div class="alert alert-warning alert-dismissible" role="alert"
+				ng-show="user_form.endereco.$dirty && user_form.endereco.$invalid">
+				<small class="error" ng-show="user_form.endereco.$error.required">
+					Seu nome &eacute; obrigat&oacute;rio. </small> <small class="error"
+					ng-show="user_form.endereco.$error.minlength"> Seu EndereÃ§o precisa
+					ter ao menos 6 caracteres. </small> <small class="error"
+					ng-show="user_form.endereco.$error.maxlength"> Seu EndereÃ§o
+					n&atilde;o pode conter mais de 200 caracteres. </small>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">Email</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" id="email" name="txemail" ng-model="update_user.email" placeholder="E-mail" required/>
+			</div>
+			<!-- Validation DIV -->
+			<div class="alert alert-warning alert-dismissible" role="alert"
+				ng-show="user_form.txemail.$dirty && user_form.txemail.$invalid">
+				<small class="error" ng-show="user_form.email.$error.required">
+					Seu email &eacute; obrigat&oacute;rio. </small> <small class="error"
+					ng-show="user_form.txemail.$error.email"> Informe um e-mail
+					v&aacute;lido! </small>
+			</div>
+			<label class="col-sm-2 col-sm-2 control-label">Celular</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" data-mask="(99) 9999?9-9999" placeholder="Telefone"
+                       ng-model="update_user.celular" id="celular" name="celular">
+			</div>
+			<!-- Validation DIV -->
+			<div class="alert alert-warning alert-dismissible" role="alert"
+				ng-show="user_form.celular.$dirty && user_form.celular.$invalid">
+				<small class="error" ng-show="user_form.celular.$error.required">
+					Seu celular &eacute; obrigat&oacute;rio. </small> <small class="error"
+					ng-show="user_form.celular.$error.minlength"> Seu celular precisa
+					ter ao menos 6 caracteres. </small> <small class="error"
+					ng-show="user_form.celular.$error.maxlength"> Seu celular
+					n&atilde;o pode conter mais de 200 caracteres. </small>
+			</div>
+        </div>
+        <div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">Login</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="name" name="name" ng-model="update_user.name" placeholder="Login" 
+                	ng-minlength="2" ng-maxlength="140" maxlength="140" required/>
+			</div>
+			<!-- Validation DIV -->
+			<div class="alert alert-warning alert-dismissible" role="alert"
+				ng-show="user_form.name.$dirty && user_form.name.$invalid">
+				<small class="error" ng-show="user_form.name.$error.required">
+					Seu nome &eacute; obrigat&oacute;rio. </small> <small class="error"
+					ng-show="user_form.name.$error.minlength"> Seu login precisa
+					ter ao menos 6 caracteres. </small> <small class="error"
+					ng-show="user_form.name.$error.maxlength"> Seu login
+					n&atilde;o pode conter mais de 140 caracteres. </small>
+			</div>
+            <label class="col-sm-2 col-sm-2 control-label" for="password">Senha:</label>
+
+            <div class="col-sm-4">
+                <input type="password" class="form-control" id="txpassword" ng-minlength="6" ng-maxlength="16" maxlength="16"
+                	  name="txpassword" ng-model="update_user.password" placeholder="Senha" ng-pattern="/^[a-zA-Z0-9\-\_]{1,}$/" ng-trim="false" required/>
+            </div>
+            
+            <!-- Validation DIV -->
+           	<div class="alert alert-warning alert-dismissible" role="alert" ng-show="user_form.txpassword.$dirty && user_form.txpassword.$invalid">
+			    <small class="error" ng-show="user_form.txpassword.$error.required">
+			        Sua senha &eacute; obrigat&oacute;ria.
+   				</small>
+   				<small class="error" ng-show="user_form.txpassword.$error.pattern">
+			        Sua senha n&atilde;o pode conter espaços.
+			    </small>
+			    <small class="error" ng-show="user_form.txpassword.$error.minlength">
+			        Sua senha precisa ter ao menos 6 caracteres.
+			    </small>
+  			</div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-sm-2 " for="password">Repetir Senha:</label>
+
+            <div class="col-sm-4">
+                <input type="password" class="form-control" id="repassword" ng-minlength="6" ng-maxlength="16" maxlength="16" 
+                			name="repassword" ng-model="repassword" placeholder="Repetir a senha" nx-equal-ex="update_user.password" required />
+            </div>
+            
+            <div class="alert alert-warning alert-dismissible" role="alert" ng-show="user_form.repassword.$error.nxEqualEx">
+			    <small class="error" ng-show="user_form.repassword.$error.nxEqualEx">
+			        As senhas n&atilde;o conferem.
+   				</small>
+  			</div>
+ 			<label class="col-sm-2 col-sm-2 control-label" for="role">Perfil do Usu&aacute;rio</label>
+           	<div class="col-sm-4">
+ 	           	<select id="role" name="role" ng-init = "update_user.role = 'CUIDADOR'" ng-model="update_user.role" class="form-control" disabled>
+	           		<option value="ADMINISTRADOR" >Administrador</option>
+	           		<option value="CUIDADOR" ngValue="CUIDADOR" ng-selected="papel">Cuidador</option>
+	           		<option value="SENIOR">Senior</option>
+	           	</select>
+
+           	</div>        
+        </div>     
+		<div class="form-group">
+        	<br>
+            <div class="col-sm-10">
+            	<button type="button" ng-click="cancel()" class="btn btn-default">Cancelar</button>
+            	<button type="submit" ng-disabled="user_form.$invalid" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+        
+    </form>
+
+</div>
