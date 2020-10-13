@@ -19,7 +19,7 @@
 		<org.hsqldb.version>2.3.2</org.hsqldb.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<commons-io.version>2.4</commons-io.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<org.eclipse.jetty.jetty-maven-plugin.version>9.1.1.v20140108</org.eclipse.jetty.jetty-maven-plugin.version>
 		<javax.ws>2.0</javax.ws>
 		<h2.version>1.4.178</h2.version>
